@@ -1,5 +1,6 @@
 package com.example.gihan.builditbigger;
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
@@ -28,7 +29,7 @@ public class MainFragment extends Fragment {
 
     private AdView adView;
     private Button tellJoke;
-    private ProgressBar mProgressBar;
+    private ProgressDialog mProgress;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -38,7 +39,8 @@ public class MainFragment extends Fragment {
         tellJoke = (Button) v.findViewById(R.id.tell_joke);
         adView = (AdView) v.findViewById(R.id.adView);
 
-        mProgressBar=new ProgressBar(getContext());
+        mProgress=new ProgressDialog(getContext());
+        mProgress.setMessage("Wait");
 
         MobileAds.initialize(getContext(), "ca-app-pub-3940256099942544~3347511713");
 
@@ -50,10 +52,12 @@ public class MainFragment extends Fragment {
             @Override
             public void onClick(View v) {
 
+                mProgress.show();
                 AcyncTaskJoke taskJoke=new AcyncTaskJoke(getContext());
-                taskJoke.execute(new Pair<Context, String>(getContext(),"yyyyy"));
+                taskJoke.execute(new Pair<Context, String>(getContext(),""));
             }
         });
+
 
         return v;    }
 

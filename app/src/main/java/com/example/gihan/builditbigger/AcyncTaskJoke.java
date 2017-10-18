@@ -11,6 +11,7 @@ import android.widget.ProgressBar;
 import com.example.gihan.myapplication.backend.myApi.MyApi;
 import com.example.gihan.myapplication.backend.myApi.model.MyBean;
 import com.example.jokegradel.ShowJokes;
+import com.google.android.gms.ads.AdListener;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.InterstitialAd;
 import com.google.api.client.extensions.android.http.AndroidHttp;
@@ -28,25 +29,23 @@ public class AcyncTaskJoke extends AsyncTask<Pair<Context, String>, Void, String
 
     private static MyApi myApiService = null;
     private Context mCtx;
-    private ProgressDialog mProgress;
+   // private ProgressDialog mProgress;
     private InterstitialAd mInterstitialAd;
-
     String Joke;
 
 
-    public AcyncTaskJoke(Context mCtx) {
-        this.mCtx = mCtx;
-        mProgress = new ProgressDialog(mCtx);
-
+    public AcyncTaskJoke(Context mContexts) {
+        this.mCtx = mContexts;
+        //this.mProgress=mProgress;
     }
 
     @Override
     protected void onPreExecute() {
         super.onPreExecute();
-        if (mProgress != null) {
-            mProgress.setMessage("wait");
-            mProgress.show();
-        }
+//        if (mProgress != null) {
+//            mProgress.setMessage("wait");
+//            mProgress.show();
+//        }
     }
 
     @Override
@@ -84,11 +83,41 @@ public class AcyncTaskJoke extends AsyncTask<Pair<Context, String>, Void, String
                 .addTestDevice(AdRequest.DEVICE_ID_EMULATOR)
                 .build();
 
+//        mProgress.dismiss();
+        // Setting the interstitial ad
+        mInterstitialAd = new InterstitialAd(mCtx);
+        mInterstitialAd.setAdUnitId(mCtx.getString(R.string.interstitial_ad_unit_id));
+        mInterstitialAd.setAdListener(new AdListener() {
+            @Override
+            public void onAdLoaded() {
+                super.onAdLoaded();
 
+  //              mProgress.show();
+                mInterstitialAd.show();
+            }
 
+            @Override
+            public void onAdFailedToLoad(int errorCode) {
+                super.onAdFailedToLoad(errorCode);
 
+            //    mProgress.dismiss();
+                startJokeDisplayActivity();
+            }
 
-        mProgress.dismiss();
+            @Override
+            public void onAdClosed() {
+                startJokeDisplayActivity();
+            }
+        });
+        AdRequest arr = new AdRequest
+                .Builder()
+                .addTestDevice(AdRequest.DEVICE_ID_EMULATOR)
+                .addTestDevice(mCtx.getString(R.string.device_id))
+                .build();
+        mInterstitialAd.loadAd(arr);
+    }
+
+    private void startJokeDisplayActivity() {
         Intent intent = new Intent(mCtx, ShowJokes.class);
         intent.putExtra("joke", Joke);
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
