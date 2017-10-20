@@ -1,25 +1,25 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
+
     tools:context="com.example.gihan.builditbigger.MainFragment">
 
     <!-- TODO: Update blank fragment layout -->
-    <LinearLayout
-        android:layout_marginTop="100dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-
-        >
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="8dp"
             android:gravity="center"
             android:padding="10dp"
-            android:text="we will say joks "
+            android:layout_marginTop="100dp"
+            android:layout_marginBottom="20dp"
+            android:text="Press Button to show deleicious  joke  "
+            android:textColor="@color/colorAccent"
+            android:textSize="24dp"
+
+
 
             />
 
@@ -30,8 +30,11 @@
             android:layout_margin="8dp"
             android:gravity="center"
             android:padding="10dp"
+            android:background="@color/colorAccent"
+            android:textColor="@android:color/white"
+            android:textSize="30dp"
             android:text="Tell Jokes" />
-    </LinearLayout>
+
 
     <com.google.android.gms.ads.AdView xmlns:ads="http://schemas.android.com/apk/res-auto"
         android:id="@+id/adView"
@@ -43,8 +46,11 @@
         android:gravity="center"
         android:padding="10dp"
         ads:adSize="BANNER"
+        android:layout_marginTop="220dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="15dp"
         ads:adUnitId="ca-app-pub-1552550495766757/2220619957"
 
         ></com.google.android.gms.ads.AdView>
 
-</FrameLayout>
+</LinearLayout>

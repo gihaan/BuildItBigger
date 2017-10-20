@@ -21,6 +21,7 @@ import com.google.api.client.googleapis.services.GoogleClientRequestInitializer;
 
 import java.io.IOException;
 
+
 /**
  * Created by Gihan on 10/17/2017.
  */
@@ -29,23 +30,18 @@ public class AcyncTaskJoke extends AsyncTask<Pair<Context, String>, Void, String
 
     private static MyApi myApiService = null;
     private Context mCtx;
-   // private ProgressDialog mProgress;
     private InterstitialAd mInterstitialAd;
     String Joke;
 
 
     public AcyncTaskJoke(Context mContexts) {
         this.mCtx = mContexts;
-        //this.mProgress=mProgress;
     }
 
     @Override
     protected void onPreExecute() {
         super.onPreExecute();
-//        if (mProgress != null) {
-//            mProgress.setMessage("wait");
-//            mProgress.show();
-//        }
+
     }
 
     @Override
@@ -53,9 +49,6 @@ public class AcyncTaskJoke extends AsyncTask<Pair<Context, String>, Void, String
         if (myApiService == null) {  // Only do this once
             MyApi.Builder builder = new MyApi.Builder(AndroidHttp.newCompatibleTransport(), new AndroidJsonFactory(), null)
                     .setRootUrl("https://builditbeigger.appspot.com/_ah/api/");
-
-
-            //https://cloudenginetest-992.appspot.com/_ah/api/
 
             myApiService = builder.build();
         }
@@ -83,7 +76,6 @@ public class AcyncTaskJoke extends AsyncTask<Pair<Context, String>, Void, String
                 .addTestDevice(AdRequest.DEVICE_ID_EMULATOR)
                 .build();
 
-//        mProgress.dismiss();
         // Setting the interstitial ad
         mInterstitialAd = new InterstitialAd(mCtx);
         mInterstitialAd.setAdUnitId(mCtx.getString(R.string.interstitial_ad_unit_id));
@@ -92,7 +84,6 @@ public class AcyncTaskJoke extends AsyncTask<Pair<Context, String>, Void, String
             public void onAdLoaded() {
                 super.onAdLoaded();
 
-  //              mProgress.show();
                 mInterstitialAd.show();
             }
 
@@ -100,7 +91,7 @@ public class AcyncTaskJoke extends AsyncTask<Pair<Context, String>, Void, String
             public void onAdFailedToLoad(int errorCode) {
                 super.onAdFailedToLoad(errorCode);
 
-            //    mProgress.dismiss();
+                //    mProgress.dismiss();
                 startJokeDisplayActivity();
             }
 
@@ -122,7 +113,6 @@ public class AcyncTaskJoke extends AsyncTask<Pair<Context, String>, Void, String
         intent.putExtra("joke", Joke);
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         mCtx.startActivity(intent);
-
 
     }
 

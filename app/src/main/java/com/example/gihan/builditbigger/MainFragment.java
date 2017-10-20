@@ -7,7 +7,10 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.util.Pair;
+import android.view.ContextMenu;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -22,6 +25,7 @@ import com.google.android.gms.ads.MobileAds;
 
 
 public class MainFragment extends Fragment {
+
 
 
 
@@ -47,14 +51,13 @@ public class MainFragment extends Fragment {
         AdRequest adRequest = new AdRequest.Builder().addTestDevice(AdRequest.DEVICE_ID_EMULATOR).build();
         adView.loadAd(adRequest);
 
-
         tellJoke.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 mProgress.show();
                 AcyncTaskJoke taskJoke=new AcyncTaskJoke(getContext());
                 taskJoke.execute(new Pair<Context, String>(getContext(),""));
+              //  mProgress.dismiss();
             }
         });
 
@@ -62,4 +65,10 @@ public class MainFragment extends Fragment {
         return v;    }
 
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        mProgress.dismiss();
+
+    }
 }
