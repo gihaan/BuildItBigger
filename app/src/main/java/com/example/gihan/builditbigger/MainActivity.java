@@ -4,8 +4,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.ProgressBar;
+
+import com.example.gihan.builditbigger.Free.FreeFragment;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -14,7 +14,25 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        getSupportFragmentManager().beginTransaction().add(R.id.main_activity, new MainFragment()).commit();
+
+        if(BuildConfig.EXTRA_FEATURES){
+
+            //Paid
+          //  getSupportFragmentManager().beginTransaction().add(R.id.main_activity, new FreeFragment()).commit();
+
+            getSupportFragmentManager().beginTransaction().add(R.id.main_activity, new MainFragment()).commit();
+
+        }else{
+            //Free
+              getSupportFragmentManager().beginTransaction().add(R.id.main_activity, new FreeFragment()).commit();
+
+           // getSupportFragmentManager().beginTransaction().add(R.id.main_activity, new MainFragment()).commit();
+
+
+
+
+        }
+
 
     }
 

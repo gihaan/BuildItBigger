@@ -25,9 +25,15 @@ android {
     productFlavors {
         free {
             applicationId "com.example.gihan.builditbigger.free"
+            buildConfigField 'boolean', 'EXTRA_FEATURES', "false"
+            buildConfigField 'String', 'GOOGLE_ANALYTICS_TRACKING_ID', '"UA-XXXXXXXX-1"';
+
         }
         paid {
             applicationId "com.example.gihan.builditbigger.paid"
+            buildConfigField 'boolean', 'EXTRA_FEATURES', "true"
+            buildConfigField 'String', 'GOOGLE_ANALYTICS_TRACKING_ID', '"UA-XXXXXXXX-2"';
+
         }
     }
 
@@ -49,13 +55,13 @@ dependencies {
 
     compile project(path: ':jokelib')
     compile project(path: ':jokegradel')
+    compile project(path: ':backend', configuration: 'android-endpoints')
+
+
     compile 'com.android.support:appcompat-v7:25.3.1'
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
     compile 'com.android.support:support-v4:25.3.1'
     compile 'com.google.android.gms:play-services-ads:11.2.0'
     compile 'com.google.code.findbugs:jsr305:2.0.1'
     testCompile 'junit:junit:4.12'
-    compile project(path: ':backend', configuration: 'android-endpoints')
-
-
 }

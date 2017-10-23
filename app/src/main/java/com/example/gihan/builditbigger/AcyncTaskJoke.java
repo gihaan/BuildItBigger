@@ -8,6 +8,7 @@ import android.util.Pair;
 import android.view.View;
 import android.widget.ProgressBar;
 
+import com.example.gihan.builditbigger.R;
 import com.example.gihan.myapplication.backend.myApi.MyApi;
 import com.example.gihan.myapplication.backend.myApi.model.MyBean;
 import com.example.jokegradel.ShowJokes;
@@ -59,6 +60,8 @@ public class AcyncTaskJoke extends AsyncTask<Pair<Context, String>, Void, String
             return myApiService.sayHi(new MyBean()).execute().getJoke();
 
         } catch (IOException e) {
+
+            String ff=e.toString();
             return e.getMessage();
         }
     }

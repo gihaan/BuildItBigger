@@ -13,6 +13,7 @@ public class MyBean {
     public  MyBean(){
     initializeJoke=new InitializeJoke();
     }
+
     public String getJoke() {
         return initializeJoke.getJokes();
     }

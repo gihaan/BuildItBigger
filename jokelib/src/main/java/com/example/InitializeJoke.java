@@ -30,6 +30,7 @@ public class InitializeJoke {
     }
 
 
+
     public int random() {
 
         int randomNum;
