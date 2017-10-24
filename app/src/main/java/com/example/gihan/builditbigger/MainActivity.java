@@ -5,7 +5,7 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 
-import com.example.gihan.builditbigger.Free.FreeFragment;
+
 
 public class MainActivity extends AppCompatActivity {
 
@@ -15,26 +15,11 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
 
-        if(BuildConfig.EXTRA_FEATURES){
-
-            //Paid
-          //  getSupportFragmentManager().beginTransaction().add(R.id.main_activity, new FreeFragment()).commit();
-
-            getSupportFragmentManager().beginTransaction().add(R.id.main_activity, new MainFragment()).commit();
-
-        }else{
-            //Free
-              getSupportFragmentManager().beginTransaction().add(R.id.main_activity, new FreeFragment()).commit();
-
-           // getSupportFragmentManager().beginTransaction().add(R.id.main_activity, new MainFragment()).commit();
-
-
-
-
-        }
+        getSupportFragmentManager().beginTransaction().add(R.id.main_activity, new com.example.gihan.builditbigger.MainFragment()).commit();
 
 
     }
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -58,7 +43,7 @@ public class MainActivity extends AppCompatActivity {
 
     @SuppressWarnings("unchecked")
     public void tellJoke() {
-        new AcyncTaskJoke(this).execute();
+        new com.example.gihan.builditbigger.AcyncTaskJoke(this).execute();
 
     }
 }
