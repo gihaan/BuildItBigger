@@ -52,7 +52,6 @@ public class AcyncTaskJoke extends AsyncTask<Pair<Context, String>, Void, String
             MyApi.Builder builder = new MyApi.Builder(AndroidHttp.newCompatibleTransport(), new AndroidJsonFactory(), null)
                     .setRootUrl("https://builditbigger-78280.appspot.com/_ah/api/");
 
-            ///                    .setRootUrl("https://1-dot-build-it-bigger-183622.appspot.com/_ah/api/")
 
 
             myApiService = builder.build();
