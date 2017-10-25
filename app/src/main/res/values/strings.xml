@@ -1,5 +1,8 @@
 <resources>
     <string name="app_name">BuildItBigger</string>
+    <string name="tv_joke">Press Button to show deleicious  joke </string>
+    <string name="btn_joke">Tell Joke  joke </string>
+
 
     <string name="interstitial_ad_unit_id" translatable="false">ca-app-pub-3940256099942544/1033173712</string>
     <string name="banner_ad_unit_id" translatable="false">ca-app-pub-3940256099942544/6300978111</string>
