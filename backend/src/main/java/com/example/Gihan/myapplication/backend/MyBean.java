@@ -6,16 +6,26 @@ import com.example.InitializeJoke;
  * The object model for the data we are sending through endpoints
  */
 public class MyBean {
+//
+//    private InitializeJoke initializeJoke;
+//
+//
+//    public  MyBean(){
+//    initializeJoke=new InitializeJoke();
+//    }
+//
+//    public String getJoke() {
+//        return initializeJoke.getJokes();
+//    }
 
-    private InitializeJoke initializeJoke;
+    private String myData;
 
-
-    public  MyBean(){
-    initializeJoke=new InitializeJoke();
+    public String getData() {
+        return myData;
     }
 
-    public String getJoke() {
-        return initializeJoke.getJokes();
+    public void setData(String data) {
+        myData = data;
     }
 
 }

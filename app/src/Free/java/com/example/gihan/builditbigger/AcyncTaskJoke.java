@@ -49,7 +49,10 @@ public class AcyncTaskJoke extends AsyncTask<Pair<Context, String>, Void, String
     protected String doInBackground(Pair<Context, String>... params) {
         if (myApiService == null) {  // Only do this once
             MyApi.Builder builder = new MyApi.Builder(AndroidHttp.newCompatibleTransport(), new AndroidJsonFactory(), null)
-                    .setRootUrl("https://builditbeigger.appspot.com/_ah/api/");
+                    .setRootUrl("https://builditbigger-78280.appspot.com/_ah/api/");
+
+        //    https://<your_project_id>.appspot.com/ah/api/
+            //builditbeigger
 
             myApiService = builder.build();
         }
@@ -57,7 +60,7 @@ public class AcyncTaskJoke extends AsyncTask<Pair<Context, String>, Void, String
 
         try {
 
-            return myApiService.sayHi(new MyBean()).execute().getJoke();
+            return myApiService.sayHi().execute().getData();
 
         } catch (IOException e) {
 
